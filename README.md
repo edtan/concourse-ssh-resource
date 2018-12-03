@@ -28,13 +28,13 @@ resources:
     private_key: ((ssh-private-key))
 ```
 
-* `hostname`: *Required* Server to connect to.
+* `hostname`: *Required.* Server to connect to.
 
-* `username`: *Required* Username.
+* `username`: *Required.* Username.
 
-* `private_key`: *Required* The private key to use - use a [credentials manager](https://concourse-ci.org/creds.html) for this!
+* `private_key`: *Required.* The private key to use - use a [credentials manager](https://concourse-ci.org/creds.html) for this!
 
-* `port`: *Optional. Default `22`* Port.
+* `port`: *Optional. Default `22`.* Port.
 
 ## `check`: no-op
 
@@ -52,7 +52,7 @@ Runs the command in the provided in `params`.  The following command will be run
 ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 -p $port -i $private_key_file $username@$hostname $command
 ```
 
-Configuration:
+### Configuration:
 
 ``` yaml
 plan:
@@ -63,4 +63,4 @@ plan:
 
 ### Parameters
 
-* `command`: *Required* The command to run on the server.
+* `command`: *Required.* The command to run on the server.
