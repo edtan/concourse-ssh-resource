@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+payload=$(mktemp /tmp/resource-check.XXXXXX)
+
+cat > $payload <&0
+
+original_time=$(jq -r '.version?.time? // ""' < $payload)
+
+if [ -z "$original_time" ]; then
+  echo "[{\"time\": \"$(date +%s)\"}]"
+else
+  echo "[{\"time\": \"$original_time\"}]"
+fi

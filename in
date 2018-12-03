@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+payload=$(mktemp /tmp/resource-in.XXXXXX)
+
+cat > $payload <&0
+
+original_time=$(jq -r '.version.time // ""' < $payload)
+echo "{\"version\": {\"time\": \"$original_time\"}}"
